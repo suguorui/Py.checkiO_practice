@@ -1,0 +1,87 @@
+https://py.checkio.org/
+
+#1
+
+
+
+#2
+
+def correct_sentence(text: str) -> str:
+    """
+        returns a corrected sentence which starts with a capital letter
+        and ends with a dot.
+    """
+    # your code here
+    if text[-1] == '.':
+        text = text.capitalize()
+    else:
+        text = text.capitalize()+str(".")
+    
+    return text
+
+
+if __name__ == '__main__':
+    print("Example:")
+    print(correct_sentence("greetings, friends"))
+    
+    # These "asserts" are used for self-checking and not for an auto-testing
+    assert correct_sentence("greetings, friends") == "Greetings, friends."
+    assert correct_sentence("Greetings, friends") == "Greetings, friends."
+    assert correct_sentence("Greetings, friends.") == "Greetings, friends."
+    assert correct_sentence("hi") == "Hi."
+    print("Coding complete? Click 'Check' to earn cool rewards!")
+
+
+#3
+
+def first_word(text: str) -> str:
+    """
+        returns the first word in a given text.
+    """
+    # your code here
+    #import string
+    import string
+    text = text.replace(","," ")
+    text = text.replace("."," ")
+    text = text.lstrip()
+    l = text.split()
+    print(l)
+    i = 0
+    for i in range(0,len(text)):
+        if l[i][0] in string.ascii_letters:
+            output = l[i]
+            break
+        else: 
+            i += 1
+    return output 
+
+print(first_word("Hello world"))
+print(first_word(" a word "))
+print(first_word("don't touch it"))
+print(first_word("greetings, friends"))
+print(first_word("... and so on ..."))
+print(first_word("hi"))
+
+
+if __name__ == '__main__':
+    print("Example:")
+    print(first_word("Hello world"))
+    
+    # These "asserts" are used for self-checking and not for an auto-testing
+    assert first_word("Hello world") == "Hello"
+    assert first_word(" a word ") == "a"
+    assert first_word("don't touch it") == "don't"
+    assert first_word("greetings, friends") == "greetings"
+    assert first_word("... and so on ...") == "and"
+    assert first_word("hi") == "hi"
+    print("Coding complete? Click 'Check' to earn cool rewards!")
+
+
+import re
+def first_word(text: str) -> str:
+    """
+        returns the first word in a given text.
+    """
+    # your code here
+
+    return re.search('[\\w\']+', text).group(0)
